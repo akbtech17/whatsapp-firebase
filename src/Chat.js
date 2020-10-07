@@ -1,30 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Avatar, IconButton } from '@material-ui/core';
 import './Chat.css'
 import { AttachFile, InsertEmoticon, MoreVert, SearchOutlined } from '@material-ui/icons';
 import MicIcon from '@material-ui/icons/Mic';
-// import axios from './axios';
 
 export default function Chat() {
-
+    const [seed, setSeed] = useState("");
     // const [inputText, setInputText] = useState('');
 
-    // const sendMessage = async (e) => {
-    //     e.preventDefault();
-    //     await axios.post('/messages/new', {
-    //         name: "DEMO APP",
-    //         timestamp:"Just now!",
-    //         message:inputText,
-    //         recieved: true
-    //     })
-    //     setInputText('');
-    // } 
+    useEffect(() => {
+        setSeed(Math.floor(Math.random()*5000));
+    },[])
+    
+
+    
+
+    const sendMessage = (e) => {
+
+    }
 
     
     return (
         <div className="chat">
             <div className="chat__header">
-                <Avatar />
+                <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`}/>
                 <div className="chat__headerInfo">
                     <h3>Room Name</h3>
                     <p>Last Seen...</p>
@@ -68,7 +67,7 @@ export default function Chat() {
                         placeholder="Type a message"
                         // onChange = {e => setInputText(e.target.value)}
                     />
-                    <button type="submit">Send a message</button>
+                    <button onClick={sendMessage} type="submit">Send a message</button>
                 </form>
                 <MicIcon />
             </div>
