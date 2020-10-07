@@ -1,46 +1,27 @@
+// import  from '@material-ui/core';
 import React from 'react';
 import './App.css';
 import Chat from './Chat';
 import Sidebar from './Sidebar';
-// import Pusher from 'pusher-js';
-// import axios from './axios';
+import { BrowserRouter as Router,Route,Switch } from 'react-router-dom';
+
 
 function App() {
-
-  // const [messages, setMessages] = useState([]);
-
-  // useEffect(() => {
-  //   axios.get('/messages/sync')
-  //   .then(response => {
-  //     // console.log(response.data);
-  //     setMessages(response.data);
-  //   })
-  // },[]);
-
-  // useEffect(() => {
-  //   const pusher = new Pusher('dbb968f748401ec8df3f', {
-  //     cluster: 'ap2'
-  //   });
-
-  //   const channel = pusher.subscribe('messages');
-  //   channel.bind('inserted', function(newMessage) {
-  //     // alert(JSON.stringify(newMessage));
-  //     setMessages([...messages,newMessage]);
-  //   });
-
-  //   return () => {
-  //     channel.unbind_all();
-  //     channel.unsubscribe();
-  //   }
-  // },[messages])
-
-  // console.log(messages);
-
   return (
     <div className="app">
       <div className="app__body">
+        <Router>
         <Sidebar />
-        <Chat />
+          <Switch>
+            <Route path="/rooms/:roomID">
+              <Chat />
+            </Route> 
+            <Route path="/">
+              {/* <Chat /> */}
+            </Route>     
+          </Switch>
+        </Router>
+        
       </div> 
     </div>
   );
