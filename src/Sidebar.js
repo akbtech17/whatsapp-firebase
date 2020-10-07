@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './Sidebar.css'
 import DonutLargeIcon from '@material-ui/icons/DonutLarge';
 import MoreVertIcon from '@material-ui/icons/MoreVert';

@@ -6,7 +6,7 @@ import MicIcon from '@material-ui/icons/Mic';
 
 export default function Chat() {
     const [seed, setSeed] = useState("");
-    // const [inputText, setInputText] = useState('');
+    const [inputText, setInputText] = useState('');
 
     useEffect(() => {
         setSeed(Math.floor(Math.random()*5000));
@@ -16,7 +16,9 @@ export default function Chat() {
     
 
     const sendMessage = (e) => {
-
+        e.preventDefault();
+        console.log("you typed " +  inputText);
+        setInputText("");
     }
 
     
@@ -41,31 +43,32 @@ export default function Chat() {
                 </div>
             </div>
             <div className="chat__body">
-                
                 <p className={`chat__message chat__reciever`}>
-                        <span className="chat__name">Anshul Bansal</span>
+                    <span className="chat__name">Anshul Bansal</span>
                         This is my message!
-                        <span className="chat__timestamp">
-                            timestamp!
-                        </span>
+                    <span className="chat__timestamp">
+                        timestamp!
+                    </span>
                 </p>
-                    <p className={`chat__message chat__reciever`}>
-                        <span className="chat__name">Anshul Bansal</span>
+                <p className={`chat__message`}>
+                    <span className="chat__name">Anshul Bansal</span>
                         This is my message!
-                        <span className="chat__timestamp">
-                            timestamp!
-                        </span>
+                    <span className="chat__timestamp">
+                        timestamp!
+                    </span>
                 </p>
+                
+                
                 
             </div>
             <div className="chat__footer">
                 <InsertEmoticon />
                 <form>
                     <input 
-                        // value={inputText}
+                        value={inputText}
                         type="text" 
                         placeholder="Type a message"
-                        // onChange = {e => setInputText(e.target.value)}
+                        onChange = {e => setInputText(e.target.value)}
                     />
                     <button onClick={sendMessage} type="submit">Send a message</button>
                 </form>
